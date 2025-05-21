@@ -12,5 +12,5 @@ for i in "${dbs[@]}"; do
   fi
 done
 
-rclone copy /backup/* gdrive:$(date +%F)/
+rclone copy /backup/ gdrive:$(date +%F)/
 rm /backup/*.sql
