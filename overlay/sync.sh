@@ -6,7 +6,7 @@ rm /backup/*.sql
 dbs=($(mariadb -h$HOSTNAME -u$USERNAME -p$PASSWORD --skip_ssl -s -r -e 'SHOW DATABASES;'))
 for i in "${dbs[@]}"; do
   # IGNORE SYSTEM DATABASES
-  if [ $i != "information_schema" ] && [ $i != "performance_schema" ] && [ $i != "mysql" ] && [ $i != "sys" ]; then
+  if [ $i != "information_schema" ] && [ $i != "performance_schema" ] && [ $i != "#mysql50#lost+found"] && [ $i != "mysql" ] && [ $i != "sys" ]; then
     echo "Dumping $i ..."
     mariadb-dump --max_allowed_packet=512M --skip_ssl -h$HOSTNAME -u$USERNAME -p$PASSWORD $i >/backup/$i".sql"
   fi
