@@ -7,3 +7,5 @@ RUN apk add --no-cache rclone mariadb-client bash && chmod +x /entrypoint.sh && 
 WORKDIR /backup
 
 ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["/sync.sh"]
