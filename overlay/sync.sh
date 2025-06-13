@@ -13,4 +13,8 @@ for i in "${dbs[@]}"; do
 done
 
 rclone copy /backup/ gdrive:$(date +%F)/
+
+rclone delete gdrive: --min-age 14d
+rclone rmdirs gdrive:
+
 rm /backup/*.sql
